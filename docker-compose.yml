@@ -1,0 +1,37 @@
+version: "3"
+services:
+  redis_cache:
+    image: redis:alpine
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - 6379:6379
+    networks:
+      - analytics
+
+  server:
+    build:
+      dockerfile: Dockerfile
+      context: ./
+    depends_on:
+      - redis_cache
+    ports:
+      - 4000:4000
+    environment:
+      - REDIS_URL=redis://redis_cache:6379/
+      - JWT_ISSUER= cafedroid
+      - JWT_EXPIRES_IN=72h
+      - JWT_ALGORITHM=RS256
+      - SALT_WORK_FACTOR=10
+      - SALT_SECRET_KEY=THISISASTRONGSECRETHERE
+      - LOGGING_TRANSPORT_FILENAME=CAFEDROID-%DATE%.log
+      - LOGGING_TRANSPORT_DATE_PATTERN=YYYY-MM-DD-HH
+      - LOGGING_TRANSPORT_ZIPPED_ARCHIVE=true
+      - LOGGING_TRANSPORT_MAX_SIZE=100m
+      - LOGGING_TRANSPORT_MAX_FILES=365d
+    command: sh -c 'yarn serve'
+    networks:
+      - analytics
+
+networks:
+  analytics:
