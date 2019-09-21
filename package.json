@@ -1,19 +1,24 @@
 {
-  "name": "Node-js-typescript-graphql",
+  "name": "nodejs-typescript-graphql",
   "version": "0.1.0",
   "description": "A starter code for Nodejs graphql server  with typescript and webpack",
   "main": "app.js",
   "repository": "https://github.com/thakursachin467/Node-js-typescript-graphql.git",
   "author": "Sachin Thakur <thakursachin467@gmail.com>",
   "license": "MIT",
-   "dependencies": {
+  "dependencies": {
     "@graphql-modules/core": "^0.7.12",
     "@sentry/node": "^5.6.2",
+    "@types/graphql": "^14.5.0",
+    "@types/reflect-metadata": "^0.1.0",
     "apollo-server": "^2.9.3",
     "apollo-server-express": "^2.9.3",
+    "appmetrics-dash": "^5.2.0",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "graphql": "^14.5.6"
+    "graphql": "^14.5.6",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "^0.17.5"
   },
   "scripts": {
     "build": "webpack --config webpack.$NODE_ENV.js",

@@ -1,5 +1,5 @@
 import { GraphQLModule } from '@graphql-modules/core';
-import { userModule } from "./user/user.module";
+import { UserModule } from "./user/user.module";
 
 
 //whenere a new module is added don't forget to add those modules here.
@@ -8,5 +8,5 @@ import { userModule } from "./user/user.module";
  */
 export const AppModule = new GraphQLModule({
   name: "App",
-  imports: [userModule]
+  imports: [UserModule]
 });

@@ -1,4 +1,8 @@
 //only code related to server will be written here 
+import "reflect-metadata";
+import Dash from "appmetrics-dash";
+Dash.attach()
+Dash.monitor()
 import { ApolloServer, SchemaDirectiveVisitor } from "apollo-server-express";
 import { captureException } from "@sentry/node";
 import express, { Express } from "express";
@@ -40,18 +44,13 @@ server.applyMiddleware({ app });
 
 // Start the server
 app.listen({ port: process.env.PORT || 4000 }, () => {
-  // eslint-disable-next-line no-console
   console.log(
     `       
-      🎉server running in ${process.env.NODE_ENV} mode
-      🚀 Graphql Server ready at http://localhost:${process.env.PORT || 4000}${
+      🎉  server running in ${process.env.NODE_ENV} mode
+      🚀   Graphql Server ready at http://localhost:${process.env.PORT || 4000}${
     server.graphqlPath
     }
+    📈   Monitor UI ready at http://localhost:${process.env.PORT || 4000}/appmetrics-dash
       `
   );
 });
-// Hot Module Replacement
-if (module.hot) {
-  module.hot.accept();
-  module.hot.dispose(() => console.log('Module disposed. '));
-}
