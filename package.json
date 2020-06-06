@@ -12,7 +12,7 @@
     "@types/graphql": "^14.5.0",
     "@types/reflect-metadata": "^0.1.0",
     "apollo-server": "^2.9.3",
-    "apollo-server-express": "^2.9.3",
+    "apollo-server-express": "^2.14.2",
     "appmetrics-dash": "^5.2.0",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
